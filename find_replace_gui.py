@@ -1,6 +1,5 @@
 import re
 import streamlit as st
-import pyperclip
 
 # Define the regular expressions to search for and their replacements
 patterns = [
@@ -36,11 +35,6 @@ def main():
         output_text = apply_substitutions(input_text)
         # Display the modified HTML
         st.text_area('Modified HTML', value=output_text, height=200)
-
-        # Create a button to copy the modified HTML
-        if st.button('Copy Modified HTML'):
-            pyperclip.copy(output_text)
-            st.success('Modified HTML copied to the clipboard!')
 
 if __name__ == '__main__':
     main()
