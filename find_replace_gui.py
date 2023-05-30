@@ -1,10 +1,9 @@
 import re
-import tkinter as tk
-from tkinter.scrolledtext import ScrolledText
+import streamlit as st
 
 # Define the regular expressions to search for and their replacements
 patterns = [
-(r'<p.*?>', '<p style="margin: 20px 0;line-height: 1.5;">'),
+    (r'<p.*?>', '<p style="margin: 20px 0;line-height: 1.5;">'),
     (r'<li.*?>', '<li><p style="margin: 20px 0;line-height: 1.5;">'),
     (r'</li>', '</p></li>'),
     (r'</?span.*?>', ''),
@@ -17,33 +16,25 @@ patterns = [
 ]
 
 # Define the function to apply the substitutions
-def apply_substitutions():
-    # Get the text from the input box
-    text = input_box.get('1.0', tk.END)
-
+def apply_substitutions(text):
     # Apply the regular expressions and replacements to the text
     for pattern, replacement in patterns:
         text = re.sub(pattern, replacement, text)
 
-    # Update the output box with the modified text
-    output_box.delete('1.0', tk.END)
-    output_box.insert('1.0', text)
+    return text
 
-# Set up the GUI
-root = tk.Tk()
-root.title('HTML Substitution Tool')
+# Set up the Streamlit app
+def main():
+    st.title('HTML Substitution Tool')
 
-# Create the input box for the user to paste in HTML
-input_box = ScrolledText(root, width=80, height=20, font=('Arial', 12))
-input_box.pack(padx=10, pady=10)
+    # Create the input box for the user to paste in HTML
+    input_text = st.text_area('Input HTML', height=200)
 
-# Create the button to apply the substitutions
-button = tk.Button(root, text='Apply Substitutions', command=apply_substitutions)
-button.pack(pady=10)
+    # Create the button to apply the substitutions
+    if st.button('Apply Substitutions'):
+        output_text = apply_substitutions(input_text)
+        # Display the modified HTML
+        st.text_area('Modified HTML', value=output_text, height=200)
 
-# Create the output box to display the modified HTML
-output_box = ScrolledText(root, width=80, height=20, font=('Arial', 12))
-output_box.pack(padx=10, pady=10)
-
-# Start the GUI event loop
-root.mainloop()
+if __name__ == '__main__':
+    main()
