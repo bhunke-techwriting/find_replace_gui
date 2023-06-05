@@ -26,8 +26,8 @@ def apply_substitutions(input_text):
     # Apply the <i> substitution for <span> tags
     text = re.sub(r'<span style="font-style:italic">(.*?)</span>', r'<i>\1</i>', text)
 
-    # Add paragraph tag to list items
-    text = re.sub(r'<li.*?>(.*?)</li>', r'<li><p style="margin: 20px 0;line-height: 1.5;">\1</p></li>', text)
+    # Add paragraph tag to ordered list items
+    text = re.sub(r'<li(?!.*?<ul).*?>(.*?)</li>', r'<li><p style="margin: 20px 0;line-height: 1.5;">\1</p></li>', text)
 
     # Apply the regular expressions and replacements to the text
     for pattern, replacement in patterns:
