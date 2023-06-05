@@ -19,12 +19,9 @@ patterns = [
 ]
 
 # Define the function to apply the substitutions
-def apply_substitutions():
-    # Get the text from the input box
-    text = input_box.text_area('Input HTML', height=200)
-
+def apply_substitutions(input_text):
     # Apply the <strong> substitution for <span> tags
-    text = re.sub(r'<span style="font-weight:700">(.*?)</span>', r'<strong>\1</strong>', text)
+    text = re.sub(r'<span style="font-weight:700">(.*?)</span>', r'<strong>\1</strong>', input_text)
 
     # Apply the <i> substitution for <span> tags
     text = re.sub(r'<span style="font-style:italic">(.*?)</span>', r'<i>\1</i>', text)
@@ -36,8 +33,7 @@ def apply_substitutions():
     for pattern, replacement in patterns:
         text = re.sub(pattern, replacement, text)
 
-    # Display the modified HTML
-    st.text_area('Modified HTML', value=text, height=200)
+    return text
 
 # Set up the Streamlit app
 def main():
@@ -51,3 +47,6 @@ def main():
         output_text = apply_substitutions(input_text)
         # Display the modified HTML
         st.text_area('Modified HTML', value=output_text, height=200)
+
+if __name__ == "__main__":
+    main()
