@@ -51,6 +51,3 @@ def main():
         output_text = apply_substitutions(input_text)
         # Display the modified HTML
         st.text_area('Modified HTML', value=output_text, height=200)
-
-if __name__ == '__main__':
-    main()
