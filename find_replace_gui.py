@@ -27,7 +27,7 @@ def apply_substitutions(input_text):
     text = re.sub(r'<span style="font-style:italic">(.*?)</span>', r'<i>\1</i>', text)
 
     # Add paragraph tag to ordered list items
-    text = re.sub(r'<li(?!(?:[^<]*<\/ul>|[^<]*<\/ol>))>(.*?)</li>', r'<li><p style="margin: 20px 0;line-height: 1.5;">\1</p></li>', text)
+    text = re.sub(r'<li(?!(?:[^<]*<\/ul>|[^<]*<\/ol>))(.*?)</li>', r'<li><p style="margin: 20px 0;line-height: 1.5;">\2</p></li>', text, flags=re.DOTALL)
 
     # Apply the regular expressions and replacements to the text
     for pattern, replacement in patterns:
