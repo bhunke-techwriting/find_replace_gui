@@ -40,10 +40,17 @@ def apply_substitutions():
     st.text_area('Modified HTML', value=text, height=200)
 
 # Set up the Streamlit app
-st.title('HTML Substitution Tool')
+def main():
+    st.title('HTML Substitution Tool')
 
-# Create the button to apply the substitutions
-st.button('Apply Substitutions', on_click=apply_substitutions)
+    # Create the input box for the user to paste in HTML
+    input_text = st.text_area('Input HTML', height=200)
 
-# Create the input box for the user to paste in HTML
-input_box = st.empty()
+    # Create the button to apply the substitutions
+    if st.button('Apply Substitutions'):
+        output_text = apply_substitutions(input_text)
+        # Display the modified HTML
+        st.text_area('Modified HTML', value=output_text, height=200)
+
+if __name__ == '__main__':
+    main()
