@@ -11,7 +11,7 @@ patterns = [
     (r'<h2.*?>', '<h2 style="margin: 20px 0;line-height: 1.5;font-size: 24px;font-weight: 400;">'),
     (r'<h3.*?>', '<h3 style="margin: 20px 0;line-height: 1.5;font-size: 20px;font-weight: 400;">'),
     (r'<h4.*?>', '<h4 style="margin: 20px 0;line-height: 1.5;font-size: 18px;font-weight: 700;">'),
-    (r'<table.*?>', '<table border="1" class="table-bordered" style=”border-collapse:collapse;”>'),
+    (r'<table.*?>', '<table border="1" class="table-bordered" style="word-wrap: break-word;width: 100%;border-collapse:collapse;">'),
     (r'<img ', '<img class="img-responsive fr-fic fr-dii" '),
     (r'<p style="margin: 20px 0;line-height: 1.5;">&nbsp;</p>', ''),
     (r'<p style="margin: 20px 0;line-height: 1.5;"><p style="margin: 20px 0;line-height: 1.5;">', '<p style="margin: 20px 0;line-height: 1.5;">'),
