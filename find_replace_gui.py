@@ -15,6 +15,7 @@ patterns = [
     (r'<img ', '<img class="img-responsive fr-fic fr-dii" '),
     (r'<p style="margin: 20px 0;line-height: 1.5;">&nbsp;</p>', ''),
     (r'<p style="margin: 20px 0;line-height: 1.5;"><p style="margin: 20px 0;line-height: 1.5;">', '<p style="margin: 20px 0;line-height: 1.5;">'),
+    (r'<div class="alert alert-info".*?>', '<div class="alert alert-info" style="margin: 20px 0;line-height: 1.5;padding: 15px;margin-bottom: 20px;border: 1px solid transparent;border-radius: 4px;background-color: #d9edf7;border-color: #bce8f1;">'),
     (r'</p></p>', '</p>')
 ]
 
