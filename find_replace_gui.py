@@ -3,7 +3,8 @@ import streamlit as st
 
 # Define the regular expressions to search for and their replacements
 patterns = [
-    (r'<p.*?>', '<p style="margin: 20px 0;line-height: 1.5;">'),
+    (r'<p>', '<p style="margin: 20px 0;line-height: 1.5;">'),
+    (r'<p .*?>', '<p style="margin: 20px 0;line-height: 1.5;">'),
     (r'<li.*?>', '<li style="margin: 10px 0;line-height: 1.5;">'),
     #(r'</li>', '</p></li>'),
     (r'</?span.*?>', ''),
