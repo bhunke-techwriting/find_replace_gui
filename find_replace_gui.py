@@ -37,6 +37,38 @@ def apply_substitutions(input_text):
 
     return text
 
+# Define the function to apply the substitutions
+def apply_substitutions(input_text):
+    # Split the input text into lines
+    lines = input_text.splitlines()
+
+    # Check the first line
+    if lines and lines[0] == '<p style="margin: 0px 0;line-height: 0;">&nbsp;</p>':
+        return input_text  # If the first line matches, do nothing
+
+    elif lines and lines[0] == '<p style="margin: 20px 0;line-height: 1.5;">&nbsp;</p>':
+        # Replace the first line with the desired substitution
+        lines[0] = '<p style="margin: 0px 0;line-height: 0;">&nbsp;</p>'
+
+    else:
+        # If the first line doesn't match any condition, insert a new line at the beginning
+        lines.insert(0, '<p style="margin: 0px 0;line-height: 0;">&nbsp;</p>')
+
+    # Reassemble the lines into a single string
+    text = '\n'.join(lines)
+
+    # Apply the <strong> substitution for <span> tags
+    text = re.sub(r'<span style="font-weight:700">(.*?)</span>', r'<strong>\1</strong>', text)
+
+    # Apply the <i> substitution for <span> tags
+    text = re.sub(r'<span style="font-style:italic">(.*?)</span>', r'<i>\1</i>', text)
+
+    # Apply the regular expressions and replacements to the text
+    for pattern, replacement in patterns:
+        text = re.sub(pattern, replacement, text)
+
+    return text
+
 # Set up the Streamlit app
 def main():
     st.title('HTML Substitution Tool')
