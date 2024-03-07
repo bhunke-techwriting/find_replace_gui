@@ -36,7 +36,7 @@ def apply_substitutions(input_text):
         text = re.sub(pattern, replacement, text)
 
     # Substitute paragraph tags within tables with empty string
-    text = re.sub(r'<table(?:.|\n)*?>.*?<p.*?>.*?</p>(?:.|\n)*?</table>', lambda match: match.group(0).replace('<p>', '').replace('</p>', ''), text)
+    text = re.sub(r'<table(?:.|\n)*?>.*?<p.*?>.*?</p>(?:.|\n)*?</table>', lambda match: match.group(0).replace('</p>\n<p.*?>', '<br><br>').replace('<p.*?>', '').replace('</p>', ''), text)
     return text
 
 # Define the function to apply the substitutions
