@@ -69,6 +69,7 @@ def apply_substitutions(input_text):
     for pattern, replacement in patterns:
         text = re.sub(pattern, replacement, text)
 
+    text = re.sub(r'<table(?:.|\n)*?>.*?<p.*?>.*?</p>(?:.|\n)*?</table>', lambda match: match.group(0).replace('<p style="margin: 20px 0;line-height: 1.5;">', '<p style="margin: 5px 0;line-height: 1.5;">'), text)
     return text
 
  # Identify paragraph tags inside tables and set different margin style
